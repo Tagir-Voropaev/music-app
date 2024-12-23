@@ -1,0 +1,27 @@
+.page {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    grid-template-rows: calc(100vh - 80px) 80px; // Изменяем на точный расчет высоты
+    grid-template-areas:
+        "sidebar content"
+        "player player";
+    height: 100vh;
+}
+
+.sidebar {
+    grid-area: sidebar;
+    background-color: #ececec;
+    box-shadow: 0px 0px 18px 2px rgba(34, 60, 80, 0.2);
+}
+
+.content {
+    grid-area: content;
+    background-color: #fff;
+}
+
+.player {
+    border-top: 5px solid #c0c0c0;
+    grid-area: player;
+    background-color: #ececec;
+
+}
