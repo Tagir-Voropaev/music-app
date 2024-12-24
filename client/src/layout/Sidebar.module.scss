@@ -4,45 +4,44 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 100%;
-    min-width: 250px;
+    height: 100%;
 }
 
 .menu {
     // ... существующие стили ...
-    transition: all 0.3s ease;
+    max-height: 100%;
 
     &.collapsed {
-        min-width: 80px; // Уменьшаем ширину при сворачивании
-
-        .middle__title {
-            display: none;
-        }
+        min-width: 50px; // Уменьшаем ширину при сворачивании
+        height: 100%;
 
         .list__item {
-            p {
-                display: none;
-            }
+            display: flex;
+            justify-content: flex-start;
+
         }
+
+        .middle__title {
+            opacity: 0;
+            max-width: 0;
+            padding-left: 0;
+            transform: translateX(-20px);
+        }
+
 
         // Опционально: центрируем иконки при сворачивании
         .list__icon__block {
-            width: 100%;
+            width: 50px;
         }
     }
 }
 
 // Добавляем анимацию для кнопки
-.menu__button {
-    // ... существующие стили ...
-    
-    .collapsed & {
-        transform: rotate(180deg);
-    }
-}
+
 
 // Добавляем плавный переход для всех элементов
 .list__item {
+
     // ... существующие стили ...
     p {
         transition: opacity 0.3s ease;
@@ -51,7 +50,14 @@
 }
 
 .middle__title {
-    transition: opacity 0.3s ease;
+    transition: all 0.3s ease;
+    padding-left: 10px;
+    font-weight: 500;
+    opacity: 1;
+    max-width: 200px; // Установите значение под вашу максимальную ширину текста
+    white-space: nowrap;
+    overflow: hidden;
+    transform: translateX(0);
 }
 
 .menu__button__block {
@@ -63,8 +69,9 @@
 }
 
 .menu__button {
+    position: relative;
     background-color: #ececec;
-    border: 1px solid #73737300;
+    border:none;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
@@ -73,20 +80,40 @@
     height: 50px;
     width: 50px;
     transition: all 0.3s ease;
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border: 2px solid transparent;
+        background: linear-gradient(
+            90deg,
+            transparent calc(var(--mouse-x, 0%) - 80%),
+            #8e8e8e calc(var(--mouse-x, 0%)),
+            transparent calc(var(--mouse-x, 0%) + 80%)
+        ) border-box;
+        background-position: 0 var(--mouse-y, 0%);
+        background-size: 100% 200%;
+        -webkit-mask:
+            linear-gradient(#fff 0 0) padding-box, 
+            linear-gradient(#fff 0 0);
+        -webkit-mask-composite: destination-out;
+        mask-composite: exclude;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
 
+    &:hover::before {
+        opacity: 0.5;
+    }
     &:hover {
-        box-shadow: 0px 0px 15px -5px #858585;
-        border: 1px solid #73737372;
+
         background-color: #d7d7d7;
     }
 }
 
-.menu__button_image {
-    display: block;
+.menu__button__icon {
     width: 100%;
-    height: 4px; // Толщина полоски
-    background-color: #333; // Цвет полосок
-    border-radius: 2px; // Скругление краев полосок
+    height: 100%;
 }
 
 .menu__list {
@@ -99,7 +126,9 @@
 }
 
 .menu__top {
-    overflow: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 10px 0;
 
     &::-webkit-scrollbar {
         width: 5px;
@@ -122,16 +151,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    min-width: 50px;
     width: 50px;
     height: 50px;
 }
 
 .list__icon {
+    color: #323232;
     width: 20px;
     height: 20px;
 }
 
 .list__item {
+    user-select: none;
     cursor: pointer;
     transition: all 0.3s ease;
     height: 50px;
@@ -139,20 +171,54 @@
     align-items: center;
     gap: 10px;
     position: relative; // Добавляем для корректной работы тени
-    box-shadow: 0px 0px 15px 0px #85858500;
-    &:hover {
-        background-color: #d7d7d7;
-        box-shadow: 0px 0px 15px -5px #858585;
-
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border: 2px solid transparent;
+        background: linear-gradient(
+            90deg,
+            transparent calc(var(--mouse-x, 0%) - 20%),
+            #8e8e8e calc(var(--mouse-x, 0%)),
+            transparent calc(var(--mouse-x, 0%) + 20%)
+        ) border-box;
+        background-position: 0 var(--mouse-y, 0%);
+        background-size: 100% 200%;
+        -webkit-mask:
+            linear-gradient(#fff 0 0) padding-box, 
+            linear-gradient(#fff 0 0);
+        -webkit-mask-composite: destination-out;
+        mask-composite: exclude;
+        opacity: 0;
+        transition: opacity 0.3s ease;
     }
 
+    &:hover::before {
+        opacity: 0.5;
+    }
+    &:hover {
+        background-color: #d7d7d7;
+    }
+    p {
+        transition: all 0.3s ease;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis; // Добавляем многоточие
+        opacity: 1;
+        max-width: 150px; // Уменьшаем максимальную ширину
+        transform: translateX(0);
+        flex: 1; // Поз
+    }
 }
 
 .middle {
+    margin-top: 50px;
+
     .middle__title {
-        padding-left: 10px;
-        font-weight: 500;
-        margin-top: 50px;
+        user-select: none;
+        margin: 0 auto;
+        font-size: 16px;
+        font-weight: 700;
     }
 }
 
@@ -176,6 +242,7 @@
 
         &:hover {
             background-color: #d7d7d7;
+
             .bottom__separator__line {
                 background-color: #b9b9b9;
             }

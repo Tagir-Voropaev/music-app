@@ -1,11 +1,16 @@
 .page {
     display: grid;
-    grid-template-columns: 1fr 5fr;
-    grid-template-rows: calc(100vh - 80px) 80px; // Изменяем на точный расчет высоты
+    transition: grid-template-columns 0.3s ease;
+    grid-template-columns: 250px calc(100% - 250px);
+    grid-template-rows: calc(100% - 80px) 80px;
     grid-template-areas:
-        "sidebar content"
+        "sidebar content_"
         "player player";
-    height: 100vh;
+    height: 100%;
+    width: 100%;
+    &.collapsed {
+        grid-template-columns: 50px 1fr; // Ширина свёрнутого сайдбара
+    }
 }
 
 .sidebar {
@@ -15,13 +20,12 @@
 }
 
 .content {
-    grid-area: content;
+    grid-area: content_;
     background-color: #fff;
 }
 
 .player {
-    border-top: 5px solid #c0c0c0;
+    width: 100vw;
     grid-area: player;
     background-color: #ececec;
-
 }
