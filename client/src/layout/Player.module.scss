@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     height: 100%;
+    min-width: 480px;
 }
 
 .player__line {
@@ -153,6 +154,8 @@
         align-items: center;
         gap: 10px;
 
+        
+
         .track__button__icon {
             width: 16px;
             height: 16px;
@@ -171,6 +174,7 @@
             }
 
         }
+
 
         .track__button__liked {
             .track__button__icon {
@@ -192,6 +196,10 @@
     align-items: center;
     gap: 5px;
 
+    .track__button__more {
+        display: none;
+    }
+
     .right__button__icon {
         width: 16px;
         height: 16px;
@@ -204,10 +212,10 @@
 
     .more__list {
         overflow: hidden;
-        top: -100%;
+        bottom: 100%;
         right: 50%;
-        transform: translate(50%, -60%);
-        width: 200px;
+        transform: translate(50%);
+        width: 230px;
         transition: all 0.2s ease;
         position: absolute;
         display: flex;
@@ -216,6 +224,7 @@
         align-items: flex-start;
         background-color: #ececec;
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+
         .more_button {
             padding: 0 15px;
             gap: 10px;
@@ -227,12 +236,15 @@
             height: 40px;
             width: 100%;
             border: none;
+
             &:hover {
                 background-color: #d9d9d9;
             }
+
             &:active {
                 background-color: #c9c9c9;
             }
+
             &::before {
                 content: '';
                 position: absolute;
@@ -244,10 +256,10 @@
                         transparent calc(var(--mouse-x, 0%) + 80%)) border-box;
                 background-position: 0 var(--mouse-y, 0%);
                 background-size: 100% 200%;
-                    -webkit-mask:
-                        linear-gradient(#fff 0 0) padding-box,
-                        linear-gradient(#fff 0 0);
-                    -webkit-mask-composite: destination-out;
+                -webkit-mask:
+                    linear-gradient(#fff 0 0) padding-box,
+                    linear-gradient(#fff 0 0);
+                -webkit-mask-composite: destination-out;
                 mask-composite: exclude;
                 opacity: 0;
                 transition: opacity 0.3s ease;
@@ -256,21 +268,146 @@
             &:hover::before {
                 opacity: 0.5;
             }
-            .more__button__icon{
+
+            .more__button__icon {
                 width: 12px;
                 height: 12px;
                 color: #323232;
             }
         }
+
+        .track__button__add,
+        .right__button__ontop,
+        .right__button__expand {
+            display: none;
+        }
+        .left__button__repeat,
+        .left__button__shuffle {
+            display: none;
+        }
+        .right__button__queue{
+            display: none;
+        }
     }
-    .more__list__show{
+
+    .more__list__show {
         height: fit-content;
         opacity: 1;
+
+
+
     }
-    .more__list__hide{
+
+
+    .more__list__hide {
         height: 0;
         opacity: 0;
     }
 
-   
+
+}
+
+.right__buttons {
+    .more__block {
+        display: none;
+    }
+}
+
+@media (max-width: 1200px) {
+    .more__list {
+
+        .track__button__add,
+        .right__button__ontop,
+        .right__button__expand {
+            display: flex !important; // Принудительно показываем
+        }
+
+        .separator {
+            display: flex;
+            width: 100%;
+            padding: 5px;
+
+            .separator__line {
+                height: 1px;
+                width: 100%;
+                background-color: #8e8e8e;
+            }
+        }
+    }
+
+    .track__buttons {
+        .more__block {
+            display: none;
+        }
+    }
+
+    .right__buttons {
+        .more__block {
+            display: block !important;
+
+            .more__list {
+                right: 0%;
+                transform: translate(0%);
+            }
+        }
+    }
+
+    // Скрываем оригинальные кнопки
+    .track__buttons {
+        .track__button__add {
+            display: none;
+        }
+    }
+
+    .right__buttons {
+        .right__button__ontop {
+            display: none;
+        }
+
+        .right__button__expand {
+            display: none;
+        }
+
+        .track__button__more {
+            display: flex !important;
+        }
+    }
+}
+
+@media (max-width: 1024px) {
+    .left__buttons {
+
+        .left__button__repeat,
+        .left__button__shuffle {
+            display: none !important;
+        }
+    }
+    .right__buttons{
+        .right__button__queue{
+            display: none !important;
+        }
+    }
+
+    .right__buttons {
+        .more__block {
+
+            .left__button__repeat,
+            .left__button__shuffle {
+                display: flex !important;
+            }
+            .right__button__queue{
+                display: flex !important;
+            }
+        }
+    }
+}
+@media (max-width: 768px) {
+    .track{
+        justify-content: center;
+    }
+    .left__button__prev,
+    .left__button__next,
+    .track__image{
+        display: none !important;
+    }
 }
