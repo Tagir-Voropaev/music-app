@@ -1,7 +1,6 @@
 'use client'
 import styles from "./Player.module.scss";
 import { config } from "@fortawesome/fontawesome-svg-core";
-config.autoAddCss = false;
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faStepBackward, faPlay, faStepForward, faRepeat, faShuffle, faPause, faEllipsis, faHeart, faPlus, faCheck, faList,
@@ -10,6 +9,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 
+config.autoAddCss = false;
 export default function Player() {
 
     useEffect(() => {
@@ -42,7 +42,6 @@ export default function Player() {
         document.addEventListener('mousemove', handleMouseMove);
         return () => document.removeEventListener('mousemove', handleMouseMove);
     }, []);
-    const [screenSize, setScreenSize] = useState('1200')
     const [showList, setShowList] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false);
     const [isRepeat, setIsRepeat] = useState(false);

@@ -1,6 +1,6 @@
 import styles from './RadioPage.module.scss'
 
-const RadioPage = () => {
+const Radio = () => {
     return (
       <div className={styles.radioPage}>
         <h1>Радио</h1>
@@ -8,4 +8,4 @@ const RadioPage = () => {
     )
   }
   
-  export default RadioPage
+  export default Radio

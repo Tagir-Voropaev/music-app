@@ -6,6 +6,9 @@
     justify-content: flex-start;
     height: 100%;
     max-height: 100%;
+    transition: all 0.3s ease;
+
+
     &.collapsed {
         min-width: 50px;
         width: 50px;
@@ -34,6 +37,9 @@
 
 // Добавляем анимацию для кнопки
 
+.menu__list {
+    transition: all 0.3s ease;
+}
 
 // Добавляем плавный переход для всех элементов
 .list__item {
@@ -67,7 +73,7 @@
 .menu__button {
     position: relative;
     background-color: #ececec;
-    border:none;
+    border: none;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
@@ -76,21 +82,20 @@
     height: 50px;
     width: 50px;
     transition: all 0.3s ease;
+
     &::before {
         content: '';
         position: absolute;
         inset: 0;
         border: 2px solid transparent;
-        background: linear-gradient(
-            90deg,
-            transparent calc(var(--mouse-x, 0%) - 80%),
-            #8e8e8e calc(var(--mouse-x, 0%)),
-            transparent calc(var(--mouse-x, 0%) + 80%)
-        ) border-box;
+        background: linear-gradient(90deg,
+                transparent calc(var(--mouse-x, 0%) - 80%),
+                #8e8e8e calc(var(--mouse-x, 0%)),
+                transparent calc(var(--mouse-x, 0%) + 80%)) border-box;
         background-position: 0 var(--mouse-y, 0%);
         background-size: 100% 200%;
         -webkit-mask:
-            linear-gradient(#fff 0 0) padding-box, 
+            linear-gradient(#fff 0 0) padding-box,
             linear-gradient(#fff 0 0);
         -webkit-mask-composite: destination-out;
         mask-composite: exclude;
@@ -101,6 +106,7 @@
     &:hover::before {
         opacity: 0.5;
     }
+
     &:hover {
 
         background-color: #d7d7d7;
@@ -167,21 +173,20 @@
     align-items: center;
     gap: 10px;
     position: relative; // Добавляем для корректной работы тени
+
     &::before {
         content: '';
         position: absolute;
         inset: 0;
         border: 2px solid transparent;
-        background: linear-gradient(
-            90deg,
-            transparent calc(var(--mouse-x, 0%) - 20%),
-            #8e8e8e calc(var(--mouse-x, 0%)),
-            transparent calc(var(--mouse-x, 0%) + 20%)
-        ) border-box;
+        background: linear-gradient(90deg,
+                transparent calc(var(--mouse-x, 0%) - 20%),
+                #8e8e8e calc(var(--mouse-x, 0%)),
+                transparent calc(var(--mouse-x, 0%) + 20%)) border-box;
         background-position: 0 var(--mouse-y, 0%);
         background-size: 100% 200%;
         -webkit-mask:
-            linear-gradient(#fff 0 0) padding-box, 
+            linear-gradient(#fff 0 0) padding-box,
             linear-gradient(#fff 0 0);
         -webkit-mask-composite: destination-out;
         mask-composite: exclude;
@@ -192,9 +197,11 @@
     &:hover::before {
         opacity: 0.5;
     }
+
     &:hover {
         background-color: #d7d7d7;
     }
+
     p {
         transition: all 0.3s ease;
         white-space: nowrap;
@@ -226,14 +233,14 @@
     width: 100%;
 
     .bottom__separator {
-        padding: 10px 20px;
+        padding: 10px 10px;
         transition: all 0.3s ease;
 
         .bottom__separator__line {
             transition: all 0.3s ease;
             width: 100%;
-            height: 1px;
-            background-color: #cccccc72;
+            height: 2px;
+            background-color: #aaaaaa4a;
         }
 
         &:hover {
