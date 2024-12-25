@@ -1,11 +1,11 @@
 import styles from './page.module.scss'
 
-const Radio = () => {
+const Artists = () => {
     return (
       <div className={styles.page}>
-        <h1>Радио</h1>
+        <h1>Исполнители</h1>
       </div>
     )
   }
   
-  export default Radio
+  export default Artists

@@ -8,6 +8,7 @@ config.autoAddCss = false;
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faMusic, faPodcast, faRadio, faHeadphones, faCompactDisc, faMicrophoneLines, faList, faFolder, faGear, faUser } from "@fortawesome/free-solid-svg-icons";
 import { useEffect } from "react";
+import Link from "next/link";
 
 interface SidebarProps {
     isCollapsed: boolean;
@@ -51,57 +52,57 @@ export default function Sidebar({ isCollapsed, setIsCollapsed }: SidebarProps) {
             <div className={styles.menu__list}>
                 <div className={styles.menu__top}>
                     <ul className={styles.top}>
-                        <li className={`${styles.top__item} ${styles.list__item}`}>
+                        <Link href='/' className={`${styles.top__item} ${styles.list__item}`}>
                             <div className={styles.list__icon__block}>
                                 <FontAwesomeIcon className={styles.list__icon} icon={faMusic} />
                             </div>
-                            <p>Главная</p>
-                        </li>
-                        <li className={`${styles.top__item} ${styles.list__item}`}>
+                            <p>Главное</p>
+                        </Link>
+                        <Link href='/radio' className={`${styles.top__item} ${styles.list__item}`}>
                             <div className={styles.list__icon__block}>
                                 <FontAwesomeIcon className={styles.list__icon} icon={faRadio} />
                             </div>
                             <p>Радио</p>
-                        </li>
-                        <li className={`${styles.top__item} ${styles.list__item}`}>
+                        </Link>
+                        <Link href='/podcasts' className={`${styles.top__item} ${styles.list__item}`}>
                             <div className={styles.list__icon__block}>
                                 <FontAwesomeIcon className={styles.list__icon} icon={faPodcast} />
                             </div>
                             <p>Подкасты и книги</p>
-                        </li>
+                        </Link>
                     </ul>
                     <ul className={styles.middle}>
                         <h2 className={styles.middle__title}>МОЯ МУЗЫКА</h2>
-                        <li className={`${styles.middle__item} ${styles.list__item}`}>
+                        <Link href="/tracks" className={`${styles.middle__item} ${styles.list__item}`}>
                             <div className={styles.list__icon__block}>
                                 <FontAwesomeIcon className={styles.list__icon} icon={faHeadphones} />
                             </div>
                             <p>Музыка</p>
-                        </li>
-                        <li className={`${styles.middle__item} ${styles.list__item}`}>
+                        </Link>
+                        <Link href="/albums" className={`${styles.middle__item} ${styles.list__item}`}>
                             <div className={styles.list__icon__block}>
                                 <FontAwesomeIcon className={styles.list__icon} icon={faCompactDisc} />
                             </div>
                             <p>Альбомы</p>
-                        </li>
-                        <li className={`${styles.middle__item} ${styles.list__item}`}>
+                        </Link>
+                        <Link href='/artists' className={`${styles.middle__item} ${styles.list__item}`}>
                             <div className={styles.list__icon__block}>
                                 <FontAwesomeIcon className={styles.list__icon} icon={faMicrophoneLines} />
                             </div>
                             <p>Исполнители</p>
-                        </li>
-                        <li className={`${styles.middle__item} ${styles.list__item}`}>
+                        </Link>
+                        <Link href='/playlists' className={`${styles.middle__item} ${styles.list__item}`}>
                             <div className={styles.list__icon__block}>
                                 <FontAwesomeIcon className={styles.list__icon} icon={faList} />
                             </div>
                             <p>Плейлисты</p>
-                        </li>
-                        <li className={`${styles.middle__item} ${styles.list__item}`}>
+                        </Link>
+                        <Link href='/files' className={`${styles.middle__item} ${styles.list__item}`}>
                             <div className={styles.list__icon__block}>
                                 <FontAwesomeIcon className={styles.list__icon} icon={faFolder} />
                             </div>
                             <p>Файлы</p>
-                        </li>
+                        </Link>
                     </ul>
                 </div>
                 <ul className={styles.bottom}>
