@@ -1,7 +1,140 @@
 .page{
+    box-sizing: border-box;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    &::-webkit-scrollbar{
+        width: 4px;
+        background-color: #d8d8d8;
+        border-radius: 5px;
+    }
+    &::-webkit-scrollbar-thumb{
+        background-color: #4e4e4eac;
+        border-radius: 5px;
+
+    }    
     .page__title{
+        width: 100%;
         font-size: 40px;
         font-weight: 700;
         margin: 40px 0;
+    }
+    .page__content{
+        width: 100%;
+        height: 100%;
+        padding: 0 10px;
+    }
+    .section__selections{
+        width: 100%;
+    }
+    .section__title{
+        font-size: 20px;
+        padding-bottom: 20px;
+    }
+    .content__selections{
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 20px;
+        width: 100%;
+        .content__selection{
+            width: 100%;
+            .content__selection__img{
+                background-color: #4e4e4e;
+                width: 100%;
+                aspect-ratio: 1 / 1;
+            }
+            .content__selection__title{
+                font-size: 16px;
+            }
+            .content__selection__subtitle{
+                font-size: 14px;
+                font-weight: 500;
+                color: #00000080;
+            }
+        }
+    }
+    .section__chart{
+        .chart__header{
+            margin-top: 50px;
+            display: flex;
+            justify-content: space-between;
+            .chart__header__text{
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                .chart__header__title{
+                    font-size: 22px;
+                    font-weight: 700;
+                }
+                .chart__header__subtitle{
+                    font-size: 16px;
+                    font-weight: 400;
+                    color: #00000080;
+                }
+            }
+            .chart__header__button{
+                cursor: pointer;
+                background-color: #fff;
+                border: none;
+                &:hover{
+                    color: #00000080;
+                }
+                &:active{
+                    color: #00000060;
+                }
+            }
+        }
+        .chart__content{
+            padding: 20px 0;
+            .chart__list{
+                display: grid;
+                grid-template-columns: repeat(2, minmax(250px, 1fr));
+                grid-template-rows: repeat(5, minmax(50px, 1fr));
+                grid-auto-flow:column;
+                .chart__elem{
+                    padding: 10px;
+                    user-select: none;
+                    display: flex;
+                    justify-content: start;
+                    align-items: center;
+                    .chart__elem__number{
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        font-size: 16px;
+                        font-weight: 400;
+                        width: 40px;
+                    }
+                    .chart__elem__img{
+                        margin-left: 5px;
+                        width: 50px;
+                        aspect-ratio: 1/1;
+                        background-color: #4e4e4e;
+                    }
+                    .chart__elem__text{
+                        width: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 3px;
+                        margin-left: 20px;
+                        .chart__elem__name{
+                            font-size: 14px;
+                        }
+                        .chart__elem__artist{
+                            font-size: 14px;
+                            color: #00000080;
+                        }
+                    }
+                    .chart__elem__time{
+                        font-size: 14px;
+                        color: #00000080;
+                    }
+                    &:hover{
+                        background-color: #00000010;
+                    }
+                }
+            }
+        }
     }
 }

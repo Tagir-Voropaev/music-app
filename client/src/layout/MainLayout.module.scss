@@ -23,10 +23,10 @@
 }
 
 .content {
+  padding: 5px;
   grid-area: content_;
   display: flex;
   flex-direction: column;
-  padding: 20px;
   background-color: #fff;
 }
 
