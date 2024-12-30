@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class MusicService {
-    findAll(){
+    getMusic(){
         return [{
             artist: 'Катя Самбука',
             name: 'Пати',

@@ -6,7 +6,7 @@ export class MusicController {
     constructor(private readonly musicService: MusicService) { }
 
     @Get()
-    findAll() {
-        return this.musicService.findAll();
+    getMusic() {
+        return this.musicService.getMusic();
     }
 }
