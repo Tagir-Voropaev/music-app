@@ -3,7 +3,6 @@
 import styles from "./MainLayout.module.scss";
 import Sidebar from "./Sidebar";
 import Player from "./Player";
-import Search from "./Search";
 import { useState } from "react";
 
 export default function MainLayout({
@@ -19,7 +18,6 @@ export default function MainLayout({
         <Sidebar isCollapsed={isCollapsed} setIsCollapsed={setIsCollapsed}/>
       </div>
       <div className={styles.content}>
-        <Search/>
         {children}
       </div>
       <div className={styles.player}>

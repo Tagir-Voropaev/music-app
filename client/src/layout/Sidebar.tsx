@@ -9,14 +9,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faMusic, faPodcast, faRadio, faHeadphones, faCompactDisc, faMicrophoneLines, faList, faFolder, faGear, faUser } from "@fortawesome/free-solid-svg-icons";
 import { useEffect } from "react";
 import Link from "next/link";
+import { useState } from "react";
 
 interface SidebarProps {
     isCollapsed: boolean;
     setIsCollapsed: (value: boolean) => void;
 }
 
-
 export default function Sidebar({ isCollapsed, setIsCollapsed }: SidebarProps) {
+    const [isAuth, setIsAuth] = useState(false);
     useEffect(() => {
         const handleMouseMove = (e: MouseEvent) => {
             const items = document.querySelectorAll(`.${styles.list__item}`);
@@ -36,11 +37,11 @@ export default function Sidebar({ isCollapsed, setIsCollapsed }: SidebarProps) {
                 (item as HTMLElement).style.setProperty('--mouse-y', `${y}%`);
             });
         };
-    
+
         document.addEventListener('mousemove', handleMouseMove);
         return () => document.removeEventListener('mousemove', handleMouseMove);
     }, []);
-
+    
     return (
         <div className={`${styles.menu} ${isCollapsed ? styles.collapsed : ''}`}>
             <div className={styles.menu__button__block}>
@@ -57,18 +58,6 @@ export default function Sidebar({ isCollapsed, setIsCollapsed }: SidebarProps) {
                                 <FontAwesomeIcon className={styles.list__icon} icon={faMusic} />
                             </div>
                             <p>Главное</p>
-                        </Link>
-                        <Link href='/radio' className={`${styles.top__item} ${styles.list__item}`}>
-                            <div className={styles.list__icon__block}>
-                                <FontAwesomeIcon className={styles.list__icon} icon={faRadio} />
-                            </div>
-                            <p>Радио</p>
-                        </Link>
-                        <Link href='/podcasts' className={`${styles.top__item} ${styles.list__item}`}>
-                            <div className={styles.list__icon__block}>
-                                <FontAwesomeIcon className={styles.list__icon} icon={faPodcast} />
-                            </div>
-                            <p>Подкасты и книги</p>
                         </Link>
                     </ul>
                     <ul className={styles.middle}>
@@ -115,12 +104,22 @@ export default function Sidebar({ isCollapsed, setIsCollapsed }: SidebarProps) {
                         </div>
                         <p>Настройки</p>
                     </li>
-                    <li className={`${styles.bottom__item} ${styles.list__item}`}>
-                        <div className={styles.list__icon__block}>
-                            <FontAwesomeIcon className={styles.list__icon} icon={faUser} />
-                        </div>
-                        <p>Профиль</p>
-                    </li>
+                    {isAuth ? (
+                        <Link href='/profile' className={`${styles.bottom__item} ${styles.list__item}`}>
+                            <div className={styles.list__icon__block}>
+                                <FontAwesomeIcon className={styles.list__icon} icon={faUser} />
+                            </div>
+                            <p>Профиль</p>
+                        </Link>
+                    )
+                        : (
+                            <Link href='/auth' className={`${styles.bottom__item} ${styles.list__item}`}>
+                                <div className={styles.list__icon__block}>
+                                    <FontAwesomeIcon className={styles.list__icon} icon={faUser} />
+                                </div>
+                                <p>Войти</p>
+                            </Link>
+                        )}
                 </ul>
             </div>
         </div>

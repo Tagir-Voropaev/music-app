@@ -1,11 +1,13 @@
 "use client"
 
 import styles from "./page.module.scss";
+import Search from "../layout/Search";
 
 export default function Home() {
 
     return (
         <div className={styles.page}>
+            <Search />
             <h1 className={styles.page__title}>Главное</h1>
             <div className={styles.page__content}>
                 <section className={styles.section__selections}>
