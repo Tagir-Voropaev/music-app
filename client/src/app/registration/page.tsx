@@ -1,6 +1,9 @@
 import styles from './page.module.scss'
 import Link from 'next/link'
+
+
 const Registration = () => {
+
   return (
     <div className={styles.page}>
       <div className={styles.reg__block}>

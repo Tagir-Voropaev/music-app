@@ -10,14 +10,15 @@ import { faBars, faMusic, faPodcast, faRadio, faHeadphones, faCompactDisc, faMic
 import { useEffect } from "react";
 import Link from "next/link";
 import { useState } from "react";
-
+import { useReg } from '../store/registration'
 interface SidebarProps {
     isCollapsed: boolean;
     setIsCollapsed: (value: boolean) => void;
 }
-
 export default function Sidebar({ isCollapsed, setIsCollapsed }: SidebarProps) {
-    const [isAuth, setIsAuth] = useState(false);
+
+    const isAuth = useReg((state) => state.isAuth)
+
     useEffect(() => {
         const handleMouseMove = (e: MouseEvent) => {
             const items = document.querySelectorAll(`.${styles.list__item}`);
@@ -41,7 +42,7 @@ export default function Sidebar({ isCollapsed, setIsCollapsed }: SidebarProps) {
         document.addEventListener('mousemove', handleMouseMove);
         return () => document.removeEventListener('mousemove', handleMouseMove);
     }, []);
-    
+
     return (
         <div className={`${styles.menu} ${isCollapsed ? styles.collapsed : ''}`}>
             <div className={styles.menu__button__block}>
