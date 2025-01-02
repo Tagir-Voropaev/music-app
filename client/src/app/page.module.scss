@@ -39,10 +39,18 @@
         width: 100%;
         .content__selection{
             width: 100%;
-            .content__selection__img{
+            .content__selection__preview{
                 background-color: #4e4e4e;
                 width: 100%;
                 aspect-ratio: 1 / 1;
+                overflow: hidden;
+                border-radius: 10px;
+                margin-bottom: 20px;
+                .content__selection__img{
+                    object-fit: cover;
+                    width: 100%;
+                    height: 100%;
+                }
             }
             .content__selection__title{
                 font-size: 16px;
@@ -106,11 +114,18 @@
                         font-weight: 400;
                         width: 40px;
                     }
-                    .chart__elem__img{
+                    .chart__elem__preview{
                         margin-left: 5px;
                         width: 50px;
                         aspect-ratio: 1/1;
                         background-color: #4e4e4e;
+                        overflow: hidden;
+                        border-radius: 5px;
+                        .chart__elem__img{
+                            object-fit: cover;
+                            width: 100%;
+                            height: 100%;
+                        }
                     }
                     .chart__elem__text{
                         width: 100%;
@@ -122,6 +137,7 @@
                             font-size: 14px;
                         }
                         .chart__elem__artist{
+                            text-overflow:ellipsis;
                             font-size: 14px;
                             color: #00000080;
                         }
